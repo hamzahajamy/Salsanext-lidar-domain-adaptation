@@ -1,0 +1,22 @@
+# Ouster OS1-128 range-image projection settings
+# Projects raw point clouds into the 2D range image SalsaNext consumes.
+# Values reflect the IKG mobile-mapping sensor configuration.
+
+sensor:
+  name: ouster_os1_128
+  num_beams: 128
+  fov_up_deg: 21.2
+  fov_down_deg: -21.2
+
+range_image:
+  height: 128           # rows = laser beams
+  width: 2048           # columns = horizontal angular resolution
+  channels: [range, x, y, z, remission]
+
+projection:
+  keep_closest: true    # nearer return wins when points share a pixel
+  empty_pixel_value: 0.0
+
+classes:
+  ignore_index: 0       # unlabeled always ignored in the loss
+  reduced_set_note: "rare classes excluded in later runs for training stability"
